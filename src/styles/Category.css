@@ -1,0 +1,78 @@
+/* Category styles */
+
+.main{
+    background-color: rgba(57, 55, 72, 0.22);
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.main-container{
+    padding-top: 80px;
+    padding-left: 101px;
+    height: 100vh;
+}
+.main-container h2{
+    font-family: Raleway;
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 160%;
+}
+
+.card-info{
+    display: flex;
+    justify-content: space-between;
+    margin-top: -35px;
+}
+
+/* Item sytling */
+
+.item-body{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item{
+    width: 370px;
+    height: 428px;
+    margin-right: 40px;
+    margin-top: 120px;
+    padding: 16px;
+}
+
+.index{
+    position: relative;
+    z-index: -1;
+}
+
+.item:hover{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.item .green-cart{
+    cursor: pointer;
+    height: fit-content;
+    padding-right: 14px;
+    visibility: hidden;
+}
+
+.item:hover .green-cart{
+    visibility: visible;
+}
+
+.item .gallery{
+    width: 354px;
+    height: 330px;
+    box-shadow: 0 1px 2px rgba(36, 35, 35, 0.3);
+}
+
+.item h5{
+    font-family: Raleway;
+    font-size: 18px;
+    line-height: 28.8px;
+    padding-top: 60px;
+}
+
+
+
+/* Item styling ends */

@@ -1,0 +1,69 @@
+/* Header styles */
+
+.header{
+    width: 100%;
+}
+.navbar-container{
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.navbar-left{
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    margin-left: -146px;
+    font-family: Raleway;
+    font-style: SemiBold;
+    font-size: 16px;
+    line-height: 19.2px;
+}
+
+.navbar-left li{
+    padding: 32px;
+    cursor: pointer;
+}
+.selected{
+    border-bottom: 2px solid #5ECE7B;
+    color: #5ECE7B;
+}
+
+.navbar-right{
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    list-style: none;
+    margin-right: -140px;
+}
+
+.navbar-right div{
+    padding-right: 22px;
+    font-family: Raleway;
+    font-style: Medium;
+    font-size: 23px;
+    line-height: 29px;
+    line-height: 160%;
+}
+.navbar-right div img{
+    padding-left: 10px;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
+
+
+.navbar-right div ~ img{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.navbar-right div img:hover{
+    margin-top: 2px;
+}
+.navbar-middle{
+    margin-left: -218px;
+    cursor: pointer;
+}

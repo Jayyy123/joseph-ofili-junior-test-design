@@ -1,0 +1,17 @@
+/* cart dropdown style */
+
+.cart-dropdown{
+    position: absolute;
+    top: 80px;
+    right: 102px;
+}
+
+.cart-dropdown-box{
+    height: 407px;
+    width: 244px;
+    background-color: white;
+}
+.cart-dropdown p{
+    text-align: center;
+    padding-top: 55%;
+}

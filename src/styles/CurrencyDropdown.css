@@ -1,0 +1,29 @@
+/* Currency dropdown styles */
+
+.currency-dropdown-box{
+    position: absolute;
+    top: 80px;
+    right: 120px;
+    width: 124px;
+    height: 169px;
+    overflow-y: auto;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.currency-dropdown-box div{
+    padding: 19px 30px;
+    cursor: pointer;
+}
+
+/* .currency-dropdown-box div:first-child{
+}
+.currency-dropdown-box div:last-child{
+    margin-bottom: -20px;
+} */
+
+.currency{
+    background-color: #EEEEEE;
+}
+
+.currency-dropdown-box div:hover, .currency{
+    background-color: #EEEEEE;
+}
