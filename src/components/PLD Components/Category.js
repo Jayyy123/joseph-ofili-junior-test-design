@@ -44,7 +44,7 @@ export class Category extends Component {
 
 
   render() {
-      const {handleLink,openCart,openCurrency,switchCurrency,currency,data,category} = this.props.value
+      const {handleLink,openCart,openCurrency,switchCurrency,currency,data,category, setSelected} = this.props.value
       const { selectedItem } = this.state
       const categoryName = category.charAt(0).toUpperCase() + category.slice(1)
       const item = data && (category === 'clothes' ? data.categories[1].products : category === 'tech' ? data.categories[2].products : data.categories[0].products)
@@ -60,7 +60,7 @@ export class Category extends Component {
             <h2>{categoryName}</h2>
             {console.log('item is',item)}
             <div className='item-body'>
-              {item.map(element => <Items value = {{element, currency, openCurrency, addItemtoCart:this.addItemtoCart}} key={element.id}/>)}
+              {item.map(element => <Items value = {{element, currency, openCurrency, addItemtoCart:this.addItemtoCart, setSelected}} key={element.id}/>)}
             </div>
           </div>
       </div>
