@@ -12,8 +12,11 @@ class CartDropdown extends Component {
           {items.length > 0 ? (
             <>
               <h6><b>My Bag</b>, {items.length} items </h6>
-              {items.map((element,index) => {
-                <AddedItem value={{element,currency}} key={element.id} />
+              {items.map((element) => {
+                console.log('theeee ele is',element)
+                return (
+                <AddedItem value={{element,currency}} key={element.id} /> 
+                )
                })}
             </>
           ) : <p>No Items in Bag!</p>}

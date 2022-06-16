@@ -1,17 +1,33 @@
 /* cart dropdown style */
 
+
 .cart-dropdown{
     position: absolute;
     top: 80px;
     right: 102px;
+    overflow-y: auto;
+    height: 400px;
+    width: 244px;
+    height: 400px;
+    background-color: white;
 }
 
 .cart-dropdown-box{
-    height: 407px;
-    width: 244px;
-    background-color: white;
+    height: 400px;
 }
 .cart-dropdown p{
     text-align: center;
     padding-top: 55%;
 }
+.carted-items{
+    display: flex;
+    margin-top: 10px;
+}
+.carted-items img{
+    width: 40px;
+    height: 40px;
+    padding-right: 30px;
+    padding-left: 16px;
+    padding-top: 16px;
+}
+
