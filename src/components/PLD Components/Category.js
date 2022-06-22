@@ -15,37 +15,10 @@ export class Category extends Component {
        selectedItem:[],
     }
   }
-  checkIfInCart = (item) => {
-    const {selectedItem} = this.state
-    for(var i = 0; i<=selectedItem.length; i++){
-      if(selectedItem[i] === item){
-        // console.log('returned\n\n',i)
-        return i;
-      }else{
-        return -1;
-      }
-    }
-  }
-
-  addItemtoCart = (item) => {
-    const {selectedItem} = this.state
-    const newItems = [...selectedItem]
-    const index =  this.checkIfInCart(item) 
-    console.log(index)
-    if (index > -1){
-      newItems.splice(index,1)
-      this.setState({selectedItem:newItems})
-      console.log('worked')
-    }else{
-      this.setState({selectedItem:[...selectedItem,item]})
-      console.log('hereee')
-    }
-  }
 
 
   render() {
-      const {handleLink,openCart,openCurrency,switchCurrency,currency,data,category, setSelected} = this.props.value
-      const { selectedItem } = this.state
+      const {handleLink,openCart,openCurrency,switchCurrency,currency,data,category, setSelected, addItemtoCart, selectedItem} = this.props.value
       const categoryName = category.charAt(0).toUpperCase() + category.slice(1)
       const item = data && (category === 'clothes' ? data.categories[1].products : category === 'tech' ? data.categories[2].products : data.categories[0].products)
       const items = selectedItem
@@ -60,7 +33,7 @@ export class Category extends Component {
             <h2>{categoryName}</h2>
             {console.log('item is',item)}
             <div className='item-body'>
-              {item.map(element => <Items value = {{element, currency, openCurrency, addItemtoCart:this.addItemtoCart, setSelected}} key={element.id}/>)}
+              {item.map(element => <Items value = {{element, currency, openCurrency, addItemtoCart, setSelected}} key={element.id}/>)}
             </div>
           </div>
       </div>

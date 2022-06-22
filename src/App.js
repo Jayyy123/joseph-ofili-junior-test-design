@@ -23,6 +23,33 @@ export class App extends Component {
       category:'all',
       update:false,
       selectedElement:[],
+      selectedItem:[],
+    }
+  }
+  checkIfInCart = (item) => {
+    const {selectedItem} = this.state
+    for(var i = 0; i<=selectedItem.length; i++){
+      if(selectedItem[i] === item){
+        // console.log('returned\n\n',i)
+        return i;
+      }else{
+        return -1;
+      }
+    }
+  }
+
+  addItemtoCart = (item) => {
+    const {selectedItem} = this.state
+    const newItems = [...selectedItem]
+    const index =  this.checkIfInCart(item) 
+    console.log(index)
+    if (index > -1){
+      newItems.splice(index,1)
+      this.setState({selectedItem:newItems})
+      console.log('worked')
+    }else{
+      this.setState({selectedItem:[...selectedItem,item]})
+      console.log('hereee')
     }
   }
 
@@ -48,8 +75,8 @@ export class App extends Component {
   }
 
   render() {
-    const { selected, openCart, currency, openCurrency, category,update, selectedElement} = this.state;
-    const packages = {selected,handleLink:this.handleLink,openCart,currency,switchCurrency:this.switchCurrency,openCurrency, category,update, cancelUpdate:this.cancelUpdate, selectedElement, setSelected:this.setSelected}
+    const { selected, openCart, currency, openCurrency, category,update, selectedElement,selectedItem} = this.state;
+    const packages = {selected,handleLink:this.handleLink,openCart,currency,switchCurrency:this.switchCurrency,openCurrency, category,update, cancelUpdate:this.cancelUpdate, selectedElement, setSelected:this.setSelected,selectedItem,"addItemtoCart":this.addItemtoCart,"checkIfInCart":this.checkIfInCart}
     // console.log(packages.data)
     return (
       <Query query={GET_ALL_PRODUCTS}>
