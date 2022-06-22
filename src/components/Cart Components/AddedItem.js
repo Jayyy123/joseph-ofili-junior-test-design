@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class AddedItem extends Component {
   render() {
-      const {currency,element} = this.props.value
+      const {element} = this.props.value
       console.log('element is ',element)
     return (
       <div className='carted-items'>
