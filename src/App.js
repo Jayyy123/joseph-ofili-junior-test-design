@@ -7,8 +7,7 @@ import { GET_ALL_PRODUCTS } from './graphql/Queries/Queries';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PDP from './components/PDP';
 import PLP from './components/PLP';
-import Cart from './components/Cart';
-import CartPage from './components/Cart Components/CartPage';
+import CartPage from './components/CartPage';
 
 export class App extends Component {
   constructor(props) {
@@ -62,7 +61,12 @@ export class App extends Component {
 
       if(reduce){
         let addedId = selectedItem[index].addedId;
-        addedId > 0 && (addedId -= 1)
+        if(addedId === 1){
+          let items = selectedItem
+          items.splice(index,1)
+        }else{
+          addedId > 0 && (addedId -= 1)
+        }
         let items = selectedItem
         items[index].addedId = addedId
         this.setState({selectedItem:items})
@@ -126,8 +130,7 @@ export class App extends Component {
                   <Routes>
                     <Route path='/' element = {<PLP value={packages}/>} />
                     <Route path='/pdp' element = {<PDP value={packages}/>}/>
-                    <Route path='/cart' element = {<Cart value={packages}/>} />
-                    <Route path='/view' element = {<CartPage value={packages}/>} />
+                    <Route path='/cart' element = {<CartPage value={packages}/>} />
                   </Routes>
                 </div>
               </Router>

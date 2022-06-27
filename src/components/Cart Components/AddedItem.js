@@ -48,7 +48,7 @@ class AddedItem extends Component {
           <div className='ranger'>
           <div onClick={()=> addItemtoCart(element.item)}>+</div>
             <h4 className='no'>{no}</h4>
-            <div>-</div>
+            <div onClick={()=> addItemtoCart(element.item,true)}>-</div>
           </div>
 
           <img src = {element.item.gallery[0]} alt='gallery' />

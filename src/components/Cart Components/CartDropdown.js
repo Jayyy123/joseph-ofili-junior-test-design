@@ -47,8 +47,8 @@ class CartDropdown extends Component {
                  <h4>{total}</h4>
                </div>
                 <div className='buttons'>
-                  <Link to={'/view'} className='view-bag-link'> <button type="submit" className='view-bag'> View Bag </button> </Link>
-                  <Link to={'/view'} className='view-bag-link'> <button type="submit" className='checkout-bag'>Checkout</button> </Link>
+                  <Link to={'/cart'} className='view-bag-link'> <button type="submit" className='view-bag'> View Bag </button> </Link>
+                  <Link to={'/cart'} className='view-bag-link'> <button type="submit" className='checkout-bag'>Checkout</button> </Link>
                 </div>
             </>
           ) : <p>No Items in Bag!</p>}
