@@ -4,7 +4,10 @@
     background-color: rgba(57, 55, 72, 0.22);
     width: 100%;
     overflow: hidden;
-    overflow-y: auto;
+    position: fixed;
+    top: 80;
+    height: 100%;
+    /* overflow-y: auto; */
 }
 
 .main-container{

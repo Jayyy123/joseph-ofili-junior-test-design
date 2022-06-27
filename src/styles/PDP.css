@@ -22,6 +22,9 @@
     width: 81px;
     position: relative;
     top: 112px;
+    height: 511px;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .subs img{
@@ -66,14 +69,6 @@
     line-height: 27px;
     padding-bottom: 42px;
 }
-.text h3{
-    width: 292px;
-    height: 27px;
-    font-family: Raleway;
-    font-style: Regular;
-    font-size: 30px;
-    line-height: 27px;
-}
 
 .size{
     height: 18px;
@@ -88,12 +83,13 @@
 .boxes{
     display: flex;
 }
+
 .boxes div{
     border: 1px solid black;
     /* background-color: white; */
     color: black;
     height: 45px;
-    width: fit-content;
+    width: 63px;
     min-width: 63px;
     margin-right: 12px;
     display: flex;

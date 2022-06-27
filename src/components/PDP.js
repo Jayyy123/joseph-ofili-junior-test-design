@@ -14,7 +14,7 @@ class PDP extends Component {
   }
 
   render() {
-    const { selectedElement, currency, openCart, handleLink,openCurrency, switchCurrency, addItemToCart } = this.props.value
+    const { selectedElement, currency, openCart, handleLink,openCurrency, switchCurrency, addItemtoCart, selectedItem } = this.props.value
     console.log('current element for description is..',selectedElement[0].gallery.length)
     const name = selectedElement[0].name,
           description = selectedElement[0].description,
@@ -26,7 +26,7 @@ class PDP extends Component {
 
     return (
       <div className={openCart ? 'main pdp-main' : 'pdp-main'}>
-          {openCart && <CartDropdown value = {{"items":selectedElement[0],currency}}/>}
+          {openCart && <CartDropdown value = {{"items":selectedItem,currency}}/>}
           {openCurrency && <CurrencyDropdown value = {{switchCurrency:switchCurrency,currency}}/>}
           <div className='pdp' onClick={()=>{ 
             handleLink('',true) 
@@ -46,7 +46,7 @@ class PDP extends Component {
             <h4>
               {prices.map((symbol,index) => <Prices value={{symbol,currency}} key={index} />)}
             </h4>
-            <button type="submit" onClick={() => addItemToCart(selectedElement[0])}>ADD TO CART</button>
+            <button type="submit" onClick={() => addItemtoCart(selectedElement[0])}>ADD TO CART</button>
             <p className='summary'> {removeTags(description)} </p>
           </div>
           </div>

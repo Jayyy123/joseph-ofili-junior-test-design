@@ -5,7 +5,7 @@ class Prices extends Component {
     const { symbol, currency } = this.props.value;
     return (
         <>
-            {symbol.currency.symbol === currency && <p className='symb'>{symbol.currency.symbol + ' ' + symbol.amount}</p>}
+            {symbol.currency.symbol === currency && <div className='symb'>{symbol.currency.symbol + ' ' + symbol.amount}</div>}
         </>
     )
   }
