@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import CurrencyDropdown from '../PLD Components/CurrencyDropdown'
-import CartDropdown from './CartDropdown'
-import '../../styles/Cart.css'
-import AddedItem from './AddedItem'
+import CurrencyDropdown from './PLD Components/CurrencyDropdown'
+import CartDropdown from './Cart Components/CartDropdown'
+import '../styles/Cart.css'
+import AddedItem from './Cart Components/AddedItem'
 
 class CartPage extends Component {
 

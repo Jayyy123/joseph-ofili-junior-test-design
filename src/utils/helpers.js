@@ -54,8 +54,8 @@ export const removeTags = (string) => {
       return false;
     }
     return true
-  })
-
+  })();
+  
   export const textToHTML = (str) => {
     if(support) {
       console.log('supporrrttedd')
