@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../styles/PDP.css'
-import { removeTags } from '../utils/helpers'
+import { removeTags, textToHTML } from '../utils/helpers'
 import CartDropdown from './Cart Components/CartDropdown'
 import Attributes from './Item Components/Attributes'
 import Gallery from './Item Components/Gallery'
@@ -47,7 +47,7 @@ class PDP extends Component {
               {prices.map((symbol,index) => <Prices value={{symbol,currency}} key={index} />)}
             </h4>
             <button type="submit" onClick={() => addItemtoCart(selectedElement[0])}>ADD TO CART</button>
-            <p className='summary'> {removeTags(description)} </p>
+            <p className='summary'> {textToHTML(description)} </p>
           </div>
           </div>
       </div>
