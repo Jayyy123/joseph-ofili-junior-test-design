@@ -23,3 +23,8 @@
   border-radius: 20px;
   animation: slide 0.5s linear none;
 }
+
+.success:hover{
+  color: green;
+  background-color: black;
+}

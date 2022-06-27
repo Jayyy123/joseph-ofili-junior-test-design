@@ -43,6 +43,10 @@
     padding: 16px;
 }
 
+.stock{
+    background-color: rgba(57, 55, 72, 0.22);
+}
+
 .index{
     position: relative;
     z-index: -1;
@@ -63,6 +67,10 @@
     visibility: visible;
 }
 
+.stock .gallery{
+    opacity: 30%;
+}
+
 .item .gallery{
     width: 354px;
     height: 330px;
@@ -74,6 +82,13 @@
     font-size: 18px;
     line-height: 28.8px;
     padding-top: 60px;
+}
+.notin{
+    position: relative;
+    top: 48%;
+    font-size: x-large;
+    left: 30%;
+    z-index: 1000;
 }
 
 

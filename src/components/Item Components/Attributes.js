@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Boxes from './Boxes'
-import Prices from './Prices';
 
 class Attributes extends Component {
     constructor(props) {
@@ -14,7 +13,8 @@ class Attributes extends Component {
       const { element } = this.props.value;
       const { selected } = this.state;
       const color = element.name === 'Color' ? true : false
-      const defaultColor = element.color
+      // const defaultColor = element.color
+
       console.log('the atrributes element is', element)
     return (
         <>

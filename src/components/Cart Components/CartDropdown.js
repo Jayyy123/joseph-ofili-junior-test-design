@@ -19,9 +19,7 @@ class CartDropdown extends Component {
     //   console.log('total is',total,'current is',current, 'filtered', current.prices.filter(element => element.currency.symbol === currency) )
     //   return parseInt(current.prices.filter(element => element.currency.symbol === currency)[0].amount) + total
     // },0))
-    const total = currency + items.reduce((total,current) => {
-      return parseInt(current.item.prices.filter(element => element.currency.symbol === currency)[0].amount) + total
-    },0)
+    const total = currency + items.reduce((total,current) => {return  parseInt(current.addedId * current.item.prices.filter(element => element.currency.symbol === currency)[0].amount) + total},0).toFixed(2)
 
     this.setState({total})
 
@@ -29,7 +27,7 @@ class CartDropdown extends Component {
 
   render() {
      const {items,currency,addItemtoCart} = this.props.value
-     const { total } = this.state
+     const total = currency + items.reduce((total,current) => {return  parseInt(current.addedId * current.item.prices.filter(element => element.currency.symbol === currency)[0].amount) + total},0).toFixed(2)
     return (
       <div className='cart-dropdown'>
         <div className='cart-dropdown-box'>
