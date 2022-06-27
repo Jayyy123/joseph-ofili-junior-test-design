@@ -2,3 +2,29 @@
   padding:0px;
   margin:0px;
 }
+
+@keyframes slide {
+  from{
+    transform: translateX(-2000px);
+  }
+  to{
+    transform: translateX(0px);
+  }
+}
+
+.success{
+  text-align: center;
+  position: fixed;
+  background-color: rgb(15, 169, 15);
+  top: 100px;
+  left: 45%;
+  color: #fff;
+  padding: 10px;
+  border-radius: 20px;
+  animation: slide 0.5s linear none;
+}
+
+.success:hover{
+  color: green;
+  background-color: black;
+}

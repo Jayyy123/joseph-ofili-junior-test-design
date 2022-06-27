@@ -7,13 +7,13 @@ import AddedItem from './AddedItem'
 class CartPage extends Component {
 
   render() {
-    const { currency, openCart, handleLink,openCurrency, switchCurrency, selectedItem } = this.props.value
-    const itemTotal = selectedItem.reduce((total,current) => {return  parseInt(current.prices.filter(element => element.currency.symbol === currency)[0].amount) + total},0).toFixed(2)
+    const { currency, openCart, addItemtoCart,handleLink,openCurrency, switchCurrency, selectedItem } = this.props.value
+    const itemTotal = selectedItem.reduce((total,current) => {return  parseInt(current.addedId * current.item.prices.filter(element => element.currency.symbol === currency)[0].amount) + total},0).toFixed(2)
     const tax =  (0.21 * itemTotal).toFixed(2)
     const total = parseInt(itemTotal) + parseInt(tax)
     return (
         <div className={openCart ? 'main main-cart' : 'main-cart'}>
-        {openCart && <CartDropdown value = {{"items":selectedItem,currency}}/>}
+        {openCart && <CartDropdown value = {{"items":selectedItem,currency,addItemtoCart}}/>}
         {openCurrency && <CurrencyDropdown value = {{switchCurrency,currency}}/>}
         <div className='cart' onClick={()=>{ 
             handleLink('',true) 
@@ -25,7 +25,7 @@ class CartPage extends Component {
                     {selectedItem.map((element) => {
                         console.log('theeee ele is',element)
                         return (
-                            <AddedItem value={{element,currency,cart:true}} key={element.id} /> 
+                            <AddedItem value={{element,currency,cart:true,'no':element.addedId,addItemtoCart}} key={element.id} /> 
                             )
                         })}
                         </div>

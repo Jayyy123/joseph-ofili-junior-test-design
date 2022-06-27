@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../styles/PDP.css'
-import { removeTags } from '../utils/helpers'
+import { removeTags, textToHTML } from '../utils/helpers'
 import CartDropdown from './Cart Components/CartDropdown'
 import Attributes from './Item Components/Attributes'
 import Gallery from './Item Components/Gallery'
@@ -26,7 +26,7 @@ class PDP extends Component {
 
     return (
       <div className={openCart ? 'main pdp-main' : 'pdp-main'}>
-          {openCart && <CartDropdown value = {{"items":selectedItem,currency}}/>}
+          {openCart && <CartDropdown value = {{"items":selectedItem,currency,addItemtoCart}}/>}
           {openCurrency && <CurrencyDropdown value = {{switchCurrency:switchCurrency,currency}}/>}
           <div className='pdp' onClick={()=>{ 
             handleLink('',true) 
@@ -47,6 +47,7 @@ class PDP extends Component {
               {prices.map((symbol,index) => <Prices value={{symbol,currency}} key={index} />)}
             </h4>
             <button type="submit" onClick={() => addItemtoCart(selectedElement[0])}>ADD TO CART</button>
+            {/* <p className='summary'> {textToHTML(description)} </p> */}
             <p className='summary'> {removeTags(description)} </p>
           </div>
           </div>

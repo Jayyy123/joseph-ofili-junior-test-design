@@ -41,3 +41,29 @@ export const removeTags = (string) => {
       return 'XL'
     }
   }
+
+
+  const support = ( () => {
+    if(!window.DOMParser) return false
+    let parser = new DOMParser();
+    console.log('trueeee')
+    try {
+      parser.parseFromString('x','text/html');
+    }catch(err){
+      console.log('falssseee')
+      return false;
+    }
+    return true
+  })
+
+  export const textToHTML = (str) => {
+    if(support) {
+      console.log('supporrrttedd')
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(str,'text/html')
+        return doc.body.innerHTML
+    }
+    let dom = document.createElement('div');
+    dom.innerHTML = str;
+    return dom;
+  }

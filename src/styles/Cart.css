@@ -99,9 +99,13 @@
     justify-content: space-between;
 }
 
-.cart-page .ranger div:first-child, .ranger h4{
+.cart-page-right .ranger div:first-child, .ranger h4{
     margin-bottom: 30px;
     text-align: center;
+}
+
+.no{
+    font-size: 20px;
 }
 
 .carted-items .symb{

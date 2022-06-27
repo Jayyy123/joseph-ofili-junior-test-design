@@ -2,7 +2,6 @@ import './App.css';
 import Header from './components/Header Component/Header';
 
 import React, { Component } from 'react'
-import Category from './components/PLD Components/Category';
 import { Query } from '@apollo/client/react/components';
 import { GET_ALL_PRODUCTS } from './graphql/Queries/Queries';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -17,6 +16,7 @@ export class App extends Component {
   
     this.state = {
       selected:'all',
+      success:false,
       link:'all',
       openCart:false,
       currency:'$',
@@ -27,31 +27,63 @@ export class App extends Component {
       selectedItem:[],
     }
   }
-  checkIfInCart = (item) => {
-    const {selectedItem} = this.state
-    for(var i = 0; i<=selectedItem.length; i++){
-      if(selectedItem[i] === item){
-        // console.log('returned\n\n',i)
-        return i;
-      }else{
-        return -1;
-      }
-    }
+
+  showSuccess = () => {
+    setTimeout(() => {
+      this.setState({success:false})
+    },2000)
   }
 
-  addItemtoCart = (item) => {
+  checkIfInCart = (item) => {
+    const {selectedItem} = this.state
+
+    for(var i = 0; i < selectedItem.length; i++){
+      if(selectedItem[i].item.id === item.id){
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  addItemtoCart = (item,reduce=false,remove=false) => {
     const {selectedItem} = this.state
     const newItems = [...selectedItem]
-    const index =  this.checkIfInCart(item) 
-    console.log(index,'item ===> ===>',item)
-    if (index > -1){
-      newItems.splice(index,1)
-      this.setState({selectedItem:newItems})
-      console.log('worked')
+
+    const index = this.checkIfInCart(item)
+    console.log(index)
+
+    if(index > -1){
+
+      if(remove){
+        let items = selectedItem
+        items.splice(index,1)
+        this.setState({selectedItem:items,success:true})
+      }
+
+      if(reduce){
+        let addedId = selectedItem[index].addedId;
+        addedId > 0 && (addedId -= 1)
+        let items = selectedItem
+        items[index].addedId = addedId
+        this.setState({selectedItem:items})
+      }else{
+        let addedId = selectedItem[index].addedId + 1
+        let items = selectedItem
+        items[index].addedId = addedId
+        this.setState({selectedItem:items})
+      }
+      
     }else{
-      this.setState({selectedItem:[...selectedItem,item]})
-      console.log('hereee')
+      const newItem = {
+        item,
+        addedId:1,
+        color:'black',
+      }
+      newItems.push(newItem)
+      this.setState({selectedItem:newItems,success:true})
     }
+
+    console.log(index,'item ===> ===>',item)
   }
 
   handleLink = (link,close = false) => {
@@ -76,9 +108,12 @@ export class App extends Component {
   }
 
   render() {
-    const { selected, openCart, currency, openCurrency, category,update, selectedElement,selectedItem} = this.state;
+    const { selected, openCart, currency, openCurrency, category,update, selectedElement,selectedItem, success} = this.state;
     const packages = {selected,handleLink:this.handleLink,openCart,currency,switchCurrency:this.switchCurrency,openCurrency, category,update, cancelUpdate:this.cancelUpdate, selectedElement, setSelected:this.setSelected,selectedItem,"addItemtoCart":this.addItemtoCart,"checkIfInCart":this.checkIfInCart}
-    // console.log(packages.data)
+    if(success){
+      this.showSuccess()
+    }
+
     return (
       <Query query={GET_ALL_PRODUCTS}>
           {({data})=> {
@@ -87,6 +122,7 @@ export class App extends Component {
               <Router>
                 <div className="App">
                   <Header value={packages}/>
+                  {success && <h1 className='success'>✅ Success!</h1>}
                   <Routes>
                     <Route path='/' element = {<PLP value={packages}/>} />
                     <Route path='/pdp' element = {<PDP value={packages}/>}/>

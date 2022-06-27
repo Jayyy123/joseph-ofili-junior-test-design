@@ -24,14 +24,14 @@ export class Category extends Component {
       const items = selectedItem
     return (
       <div className={openCart ? 'main' : ''}>
-          {openCart && <CartDropdown value = {{items,currency}}/>}
+          {openCart && <CartDropdown value = {{items,currency,addItemtoCart}}/>}
           {openCurrency && <CurrencyDropdown value = {{switchCurrency:switchCurrency,currency}}/>}
           <div className='main-container' onClick={()=>{ 
             handleLink('',true) 
             switchCurrency('',true)}}>
 
             <h2>{categoryName}</h2>
-            {console.log('item is',item)}
+            {console.log('item is',item,items)}
             <div className='item-body'>
               {item.map(element => <Items value = {{element, currency, openCurrency, addItemtoCart, setSelected}} key={element.id}/>)}
             </div>

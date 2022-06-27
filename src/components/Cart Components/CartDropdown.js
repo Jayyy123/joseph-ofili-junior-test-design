@@ -19,17 +19,15 @@ class CartDropdown extends Component {
     //   console.log('total is',total,'current is',current, 'filtered', current.prices.filter(element => element.currency.symbol === currency) )
     //   return parseInt(current.prices.filter(element => element.currency.symbol === currency)[0].amount) + total
     // },0))
-    const total = currency + items.reduce((total,current) => {
-      return parseInt(current.prices.filter(element => element.currency.symbol === currency)[0].amount) + total
-    },0)
+    const total = currency + items.reduce((total,current) => {return  parseInt(current.addedId * current.item.prices.filter(element => element.currency.symbol === currency)[0].amount) + total},0).toFixed(2)
 
     this.setState({total})
 
   }
 
   render() {
-     const {items,currency} = this.props.value
-     const { total } = this.state
+     const {items,currency,addItemtoCart} = this.props.value
+     const total = currency + items.reduce((total,current) => {return  parseInt(current.addedId * current.item.prices.filter(element => element.currency.symbol === currency)[0].amount) + total},0).toFixed(2)
     return (
       <div className='cart-dropdown'>
         <div className='cart-dropdown-box'>
@@ -40,7 +38,7 @@ class CartDropdown extends Component {
               {items.map((element) => {
                 console.log('theeee ele is',element)
                 return (
-                    <AddedItem value={{element,currency}} key={element.id} /> 
+                    <AddedItem value={{element,currency,'no':element.addedId,addItemtoCart}} key={element.item.id} /> 
                     )
                   })}
                   </div>

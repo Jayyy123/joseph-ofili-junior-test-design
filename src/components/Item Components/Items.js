@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class Items extends Component {
   render() {
       const {element,currency,openCurrency, addItemtoCart, setSelected} = this.props.value
-    return (
+    return element.inStock ? (
       <div className={openCurrency ? 'item index' : 'item'}>
           <Link to='/pdp' onClick={() => setSelected(element)}>
             <img className='gallery' src={element.gallery[0]} alt='Gallery'/>
@@ -25,7 +25,20 @@ class Items extends Component {
             </div>
         </div>
         // another
-    )
+    ) : (
+      <div className={openCurrency ? 'item stock index' : 'item stock'}>
+            <p className='notin'>Not in Stock</p>
+            <img className='gallery' src={element.gallery[0]} alt='Gallery'/>
+            <div className='card-info'>
+              <div>
+                <h5>{element.name}</h5>
+                {element.prices.map((symbol,index) => <Prices value = {{symbol, currency}} key={index}/>)}
+              </div>
+              {/* <img className='green-cart' src={circle} alt='green-cart'/> */}
+            </div>
+        </div>
+        // another
+    ) 
   }
 }
 
