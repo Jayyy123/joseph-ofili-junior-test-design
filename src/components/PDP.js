@@ -47,7 +47,8 @@ class PDP extends Component {
               {prices.map((symbol,index) => <Prices value={{symbol,currency}} key={index} />)}
             </h4>
             <button type="submit" onClick={() => addItemtoCart(selectedElement[0])}>ADD TO CART</button>
-            <p className='summary'> {textToHTML(description)} </p>
+            {/* <p className='summary'> {textToHTML(description)} </p> */}
+            <p className='summary'> {removeTags(description)} </p>
           </div>
           </div>
       </div>
