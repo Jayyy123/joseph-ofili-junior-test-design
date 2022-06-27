@@ -26,7 +26,7 @@ class PDP extends Component {
 
     return (
       <div className={openCart ? 'main pdp-main' : 'pdp-main'}>
-          {openCart && <CartDropdown value = {{"items":selectedItem,currency}}/>}
+          {openCart && <CartDropdown value = {{"items":selectedItem,currency,addItemtoCart}}/>}
           {openCurrency && <CurrencyDropdown value = {{switchCurrency:switchCurrency,currency}}/>}
           <div className='pdp' onClick={()=>{ 
             handleLink('',true) 

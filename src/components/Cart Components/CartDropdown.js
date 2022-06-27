@@ -20,7 +20,7 @@ class CartDropdown extends Component {
     //   return parseInt(current.prices.filter(element => element.currency.symbol === currency)[0].amount) + total
     // },0))
     const total = currency + items.reduce((total,current) => {
-      return parseInt(current.prices.filter(element => element.currency.symbol === currency)[0].amount) + total
+      return parseInt(current.item.prices.filter(element => element.currency.symbol === currency)[0].amount) + total
     },0)
 
     this.setState({total})
@@ -28,7 +28,7 @@ class CartDropdown extends Component {
   }
 
   render() {
-     const {items,currency} = this.props.value
+     const {items,currency,addItemtoCart} = this.props.value
      const { total } = this.state
     return (
       <div className='cart-dropdown'>
@@ -40,7 +40,7 @@ class CartDropdown extends Component {
               {items.map((element) => {
                 console.log('theeee ele is',element)
                 return (
-                    <AddedItem value={{element,currency}} key={element.id} /> 
+                    <AddedItem value={{element,currency,'no':element.addedId,addItemtoCart}} key={element.item.id} /> 
                     )
                   })}
                   </div>
