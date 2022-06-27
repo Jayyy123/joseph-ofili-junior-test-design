@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PDP from './components/PDP';
 import PLP from './components/PLP';
 import Cart from './components/Cart';
+import CartPage from './components/Cart Components/CartPage';
 
 export class App extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ export class App extends Component {
     const {selectedItem} = this.state
     const newItems = [...selectedItem]
     const index =  this.checkIfInCart(item) 
-    console.log(index)
+    console.log(index,'item ===> ===>',item)
     if (index > -1){
       newItems.splice(index,1)
       this.setState({selectedItem:newItems})
@@ -90,6 +91,7 @@ export class App extends Component {
                     <Route path='/' element = {<PLP value={packages}/>} />
                     <Route path='/pdp' element = {<PDP value={packages}/>}/>
                     <Route path='/cart' element = {<Cart value={packages}/>} />
+                    <Route path='/view' element = {<CartPage value={packages}/>} />
                   </Routes>
                 </div>
               </Router>

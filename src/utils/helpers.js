@@ -27,3 +27,17 @@ export const removeTags = (string) => {
     return stringArray.join('').toString()
     // return string.substring(3,end)
   }
+
+  export const sizeTags = (string) => {
+    if(string === '40'){
+      return 'XS'
+    }else if(string === '41'){
+      return 'S'
+    }else if(string === '42'){
+      return 'M'
+    }else if(string === '43'){
+      return 'L'
+    }else{
+      return 'XL'
+    }
+  }
