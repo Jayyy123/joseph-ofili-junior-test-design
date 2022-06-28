@@ -9,18 +9,24 @@ class Attributes extends Component {
          selected:false
       }
     }
+
+    setSelected = () => {
+      const { selected } = this.state;
+      this.setState({selected:!selected})
+    }
+
+
   render() {
-      const { element } = this.props.value;
+      const { element,defaults } = this.props.value;
       const { selected } = this.state;
       const color = element.name === 'Color' ? true : false
-      // const defaultColor = element.color
 
       console.log('the atrributes element is', element)
     return (
         <>
             <p className='size'>{element.name}:</p>
-            <div className='boxes' onClick={()=>this.setState({selected:!selected})}>
-                {element.items.map((element) => <Boxes  key={element.id} value={{"element":element.displayValue,color, selected}}/>  )}
+            <div className='boxes' >
+                {element.items.map((element) => <Boxes  key={element.id} value={{"element":element.displayValue,color, defaults ,selected,'setSelected':this.setSelected}}/>  )}
             </div>
         </>
     )

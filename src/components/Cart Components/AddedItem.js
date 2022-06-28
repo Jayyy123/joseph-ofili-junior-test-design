@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Attributes from '../Item Components/Attributes'
 import Prices from '../Item Components/Prices'
 
@@ -6,6 +7,11 @@ class AddedItem extends Component {
   render() {
       const {element, currency, cart, no, addItemtoCart} = this.props.value
       console.log('element is ',element,currency)
+
+      const defaults = {}
+      defaults.color  = element.color
+      defaults.size  = element.size
+      defaults.answer = element.answer
 
       return cart === undefined ?  (
       <div className='carted-items'>
@@ -17,7 +23,7 @@ class AddedItem extends Component {
               {element.item.prices.map((symbol,index) => <Prices value={{symbol,currency}} key={index} />)}
             </h6>
             <div className='attr'>
-              {element.item.attributes.map((element) => <Attributes value={{element}} key={element.id} />)}
+              {element.item.attributes.map((element) => <Attributes value={{element,defaults}} key={element.id} />)}
             </div>
             <button type='submit' className='remove' onClick={()=> addItemtoCart(element.item,false,true)}>Remove</button>
           </div>
@@ -33,15 +39,16 @@ class AddedItem extends Component {
       </div>
     ):  (
       <div className='carted-items'>
-
         <div className='cart-text'>
+        <Link to={'/pdp'}>
           <h4>{element.item.brand}</h4>
           <h4 className='name'>{element.item.name}</h4>
+        </Link>
           <h4>
             {element.item.prices.map((symbol,index) => <Prices value={{symbol,currency}} key={index} />)}
           </h4>
           <div className='cart-page-attr'>
-            {element.item.attributes.map((element) => <Attributes value={{element}} key={element.id} />)}
+            {element.item.attributes.map((element) => <Attributes value={{element,defaults}} key={element.id} />)}
           </div>
         </div>
         <div className='cart-page-right'>

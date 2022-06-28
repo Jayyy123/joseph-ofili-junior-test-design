@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { gql } from '@apollo/client'
-import { Query, Mutation, Subscription } from '@apollo/client/react/components';
+import { Query } from '@apollo/client/react/components';
 import { GET_ALL_PRODUCTS } from './Queries/Queries'
 
 class Categoryy extends Component {
