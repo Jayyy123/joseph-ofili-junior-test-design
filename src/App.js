@@ -36,7 +36,7 @@ export class App extends Component {
   checkIfInCart = (item) => {
     const {selectedItem} = this.state
 
-    for(var i = 0; i < selectedItem.length; i++){
+    for(let i = 0; i < selectedItem.length; i++){
       if(selectedItem[i].item.id === item.id){
         return i;
       }
@@ -81,7 +81,9 @@ export class App extends Component {
       const newItem = {
         item,
         addedId:1,
-        color:'black',
+        color:'Black',
+        size:'S',
+        answer:'No'
       }
       newItems.push(newItem)
       this.setState({selectedItem:newItems,success:true})

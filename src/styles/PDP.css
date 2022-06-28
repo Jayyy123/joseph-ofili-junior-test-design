@@ -87,7 +87,6 @@
 .boxes div{
     border: 1px solid black;
     /* background-color: white; */
-    color: black;
     height: 45px;
     width: 63px;
     min-width: 63px;
@@ -108,6 +107,7 @@
 .selected-box{
     background-color: black;
     color: white;
+    
 }
 
 .text div{
